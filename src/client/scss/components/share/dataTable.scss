@@ -1,0 +1,25 @@
+@import "../../mixins/tables";
+
+.dataTable-col-1 {
+  @include tableWarp(1);
+}
+
+.dataTable-col-2 {
+  @include tableWarp(2);
+}
+
+.dataTable-col-3 {
+  @include tableWarp(3);
+}
+
+.dataTable-col-4 {
+  @include tableWarp(4);
+}
+
+.dataTable-col-5 {
+  @include tableWarp(5);
+}
+
+.dataTable-col-6 {
+  @include tableWarp(6);
+}

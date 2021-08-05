@@ -1,0 +1,113 @@
+.card {
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  margin: 1rem 0;
+  height: 50px;
+  overflow-y: hidden;
+  background-color: white;
+  transition: all 0.3s;
+  &.active {
+    transition: all 0.3s;
+  }
+  .card-header {
+    border-radius: inherit;
+    color: #fff;
+    background-color: #343a40;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 50px;
+    .name {
+      padding: 0 0.5rem 0rem 1rem;
+      font-size: 2rem;
+      padding: auto;
+    }
+    .collapse {
+      margin-left: auto;
+      margin-right: 1rem;
+      svg {
+        color: white;
+        height: 24px;
+        width: 24px;
+      }
+    }
+  }
+  .card-content {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+    .header {
+      display: table-row;
+      border-bottom: 0.5px solid rgba(0, 0, 0, 0.12);
+      height: 48px;
+      .cell {
+        display: table-cell;
+        div {
+          font-size: 1rem;
+          text-align: center;
+          line-height: 48px;
+        }
+      }
+      background-color: white;
+      color: black;
+    }
+    .content {
+      display: table-row;
+      border-bottom: 0.5px solid rgba(0, 0, 0, 0.12);
+      height: 48px;
+      .cell {
+        display: table-cell;
+        div {
+          font-size: 1rem;
+          text-align: center;
+          line-height: 48px;
+        }
+        .buttons-warp {
+          height: 48px;
+          display: flex;
+          justify-content: space-evenly;
+          .toggle {
+            &:hover {
+              svg {
+                color: #558dcc;
+              }
+            }
+            svg {
+              color: rgb(106, 115, 125);
+            }
+          }
+        }
+      }
+    }
+  }
+  .add-btn {
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .toggle {
+      height: 46px;
+      width: 46px;
+      border-radius: 50%;
+      background-color: rgb(21, 142, 255);
+      &:hover {
+        button {
+          svg {
+            color: white;
+          }
+        }
+      }
+      button {
+        border-radius: 50%;
+
+        svg {
+          height: 30px;
+          width: 30px;
+          color: white;
+        }
+      }
+    }
+  }
+}

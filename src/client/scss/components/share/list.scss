@@ -1,0 +1,72 @@
+.listWarp {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .list-header {
+    color: #fff;
+    background-color: #343a40;
+    text-align: center;
+    padding: 0.75rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .list {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(220, 220, 220, 0.884);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    display: block;
+    overflow-y: scroll;
+    .flexWarp {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      .item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        height: 50px;
+        border-radius: 10px;
+
+        margin: 4px;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.055);
+          .item-text {
+            color: #0056b3;
+          }
+        }
+        .item-text {
+          font-size: 1rem;
+          -webkit-appearance: none;
+          -webkit-user-select: none;
+        }
+      }
+      .item-select {
+        background-color: rgba(0, 0, 0, 0.164);
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.164);
+          .item-text {
+            color: #0056b3;
+          }
+        }
+      }
+    }
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+      width: 7px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+      background-color: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+    }
+  }
+}

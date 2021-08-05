@@ -1,0 +1,64 @@
+@mixin changeTreatmentSeatDia {
+  .change-treatment-seat-dia {
+    .content {
+      .table {
+        display: table;
+        .row {
+          display: table-row;
+          .cell {
+            text-align: center;
+            display: table-cell;
+            padding: 0 1rem;
+            &.button-list {
+              max-height: 70px;
+              .container {
+                display: flex;
+                flex-direction: column;
+              }
+            }
+            .container {
+              display: flex;
+              align-items: center;
+              &.content {
+                padding: 0;
+              }
+              &.button-list-head {
+                justify-content: center;
+                .toggle {
+                  padding: 5px;
+                  button {
+                    padding: 0;
+
+                    div {
+                      background-color: rgb(240, 240, 240);
+                      svg {
+                        color: black;
+                      }
+                    }
+
+                    &:hover {
+                      svg {
+                        color: rgb(104, 172, 250);
+                      }
+                    }
+
+                    &:disabled {
+                      div {
+                        background-color: rgb(167, 167, 167);
+                      }
+                      &:hover {
+                        svg {
+                          color: black;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

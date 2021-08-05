@@ -1,0 +1,5 @@
+{
+  "python.pythonPath": "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python38\\python.exe",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "cSpell.words": ["typeorm"]
+}

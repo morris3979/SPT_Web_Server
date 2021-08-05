@@ -1,0 +1,37 @@
+@import "../components/TreatmentItemPage/changeTreatmentItemDia";
+
+.treatment-item-page {
+  @include changeTreatmentItemDia;
+  .group-add-btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+
+    .toggle {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      background-color: orange;
+      display: flex;
+      justify-content: center;
+      &:hover {
+        button {
+          svg {
+            color: white;
+          }
+        }
+      }
+      button {
+        border-radius: 50%;
+
+        svg {
+          height: 30px;
+          width: 30px;
+          color: white;
+        }
+      }
+    }
+  }
+}

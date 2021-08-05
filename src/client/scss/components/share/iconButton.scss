@@ -1,0 +1,29 @@
+.toggle {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  &:hover {
+    button {
+      .icon-warp {
+        svg {
+          color: rgb(104, 172, 250);
+        }
+      }
+    }
+  }
+  button {
+    padding: auto 1rem;
+    outline: none;
+    border: none;
+    background-color: inherit;
+    display: block;
+    .icon-warp {
+      height: 100%;
+      svg {
+        color: white;
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}

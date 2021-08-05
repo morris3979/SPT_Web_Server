@@ -1,0 +1,111 @@
+@keyframes spinner-circle {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+$warp-length: 200px;
+$magnification: 0.5;
+$div-left: 94px;
+$div-top: 48px;
+$div-width: 12px;
+$div-height: 24px;
+$div-border-radius-1: 6px;
+$div-border-radius-2: 12px;
+$div-transform-origin-1: 6px;
+$div-transform-origin-2: 52px;
+$color: #c5c4c4;
+.spinner-circle div {
+  left: $div-left * $magnification;
+  top: $div-top * $magnification;
+  position: absolute;
+  animation: spinner-circle linear 1s infinite;
+  background: $color;
+  width: $div-width * $magnification;
+  height: $div-height * $magnification;
+  border-radius: $div-border-radius-1 * $magnification #{"/"} $div-border-radius-2 *
+    $magnification;
+  transform-origin: $div-transform-origin-1 * $magnification
+    $div-transform-origin-2 * $magnification;
+}
+.spinner-circle div:nth-child(1) {
+  transform: rotate(0deg);
+  animation-delay: -0.9166666666666666s;
+  background: $color;
+}
+.spinner-circle div:nth-child(2) {
+  transform: rotate(30deg);
+  animation-delay: -0.8333333333333334s;
+  background: $color;
+}
+.spinner-circle div:nth-child(3) {
+  transform: rotate(60deg);
+  animation-delay: -0.75s;
+  background: $color;
+}
+.spinner-circle div:nth-child(4) {
+  transform: rotate(90deg);
+  animation-delay: -0.6666666666666666s;
+  background: $color;
+}
+.spinner-circle div:nth-child(5) {
+  transform: rotate(120deg);
+  animation-delay: -0.5833333333333334s;
+  background: $color;
+}
+.spinner-circle div:nth-child(6) {
+  transform: rotate(150deg);
+  animation-delay: -0.5s;
+  background: $color;
+}
+.spinner-circle div:nth-child(7) {
+  transform: rotate(180deg);
+  animation-delay: -0.4166666666666667s;
+  background: $color;
+}
+.spinner-circle div:nth-child(8) {
+  transform: rotate(210deg);
+  animation-delay: -0.3333333333333333s;
+  background: $color;
+}
+.spinner-circle div:nth-child(9) {
+  transform: rotate(240deg);
+  animation-delay: -0.25s;
+  background: $color;
+}
+.spinner-circle div:nth-child(10) {
+  transform: rotate(270deg);
+  animation-delay: -0.16666666666666666s;
+  background: $color;
+}
+.spinner-circle div:nth-child(11) {
+  transform: rotate(300deg);
+  animation-delay: -0.08333333333333333s;
+  background: $color;
+}
+.spinner-circle div:nth-child(12) {
+  transform: rotate(330deg);
+  animation-delay: 0s;
+  background: $color;
+}
+.spinner-circle-warp {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  overflow: hidden;
+  background: #ffffff00;
+}
+.spinner-circle {
+  width: $warp-length * $magnification;
+  height: $warp-length * $magnification;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.spinner-circle div {
+  box-sizing: content-box;
+}

@@ -1,0 +1,52 @@
+#sortedPage {
+    $muti: 100/140;
+    display: grid;
+    grid-template-columns: 20% * $muti 35% * $muti 35% * $muti 20% * $muti 20% * $muti;
+    grid-template-rows: 5% 20% 20% 20% 20% 10%;
+    grid-template-areas: "header0 header header header1 header2" "side1 main main side2 side3" "side1 main main side2 side3" "side1 main main side2 side3" "side1 main main side2 side3";
+    height: 100%;
+    width: 100%;
+    column-gap: 2%;
+    row-gap: 1%;
+    .header {
+        grid-area: header;
+        display: flex;
+        justify-content: left;
+        height: 80%;
+        div {
+            display: flex;
+            background-color: lightblue;
+            height: 8vh;
+        }
+    }
+    .header0 {
+        grid-area: header0;
+    }
+    .header1 {
+        grid-area: header1;
+    }
+    .header2 {
+        grid-area: header2;
+    }
+    .header3 {
+        grid-area: header3;
+        column-gap: 1%;
+    }
+    .main {
+        grid-area: main;
+        column-gap: 1%;
+    }
+    .main1 {
+        grid-area: main1;
+        column-gap: 1%;
+    }
+    .side1 {
+        grid-area: side1;
+    }
+    .side2 {
+        grid-area: side2;
+    }
+    .side3 {
+        grid-area: side3;
+    }
+}

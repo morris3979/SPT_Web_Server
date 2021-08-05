@@ -1,0 +1,85 @@
+@mixin changeTreatmentItemDia {
+  .change-treatment-item-dia {
+    .content {
+      .table {
+        display: table;
+        .row {
+          display: table-row;
+          .cell {
+            text-align: center;
+            display: table-cell;
+            padding: 0 1rem;
+            &.button-list {
+              max-height: 70px;
+              .container {
+                display: flex;
+                flex-direction: column;
+              }
+            }
+            .container {
+              display: flex;
+              align-items: center;
+              &.content {
+                padding: 0;
+              }
+              &.button-list-head {
+                justify-content: center;
+                .toggle {
+                  padding: 5px;
+                  button {
+                    padding: 0;
+                    div {
+                      background-color: rgb(240, 240, 240);
+                      svg {
+                        color: black;
+                      }
+                    }
+                    &:hover {
+                      svg {
+                        color: rgb(104, 172, 250);
+                      }
+                    }
+                  }
+                  &.disabled {
+                    div {
+                      background-color: rgb(167, 167, 167);
+                    }
+                    &:hover {
+                      svg {
+                        color: black;
+                      }
+                    }
+                  }
+                }
+              }
+              .duration {
+                input {
+                  width: 30px;
+                }
+              }
+              .amount {
+                span {
+                  margin: 0 10px;
+                }
+                button {
+                  &:hover {
+                    svg {
+                      color: #558dcc;
+                    }
+                  }
+                  border-style: none;
+                  padding: 3px;
+                  border-radius: 50%;
+                  svg {
+                    height: 16px;
+                    width: 16px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
