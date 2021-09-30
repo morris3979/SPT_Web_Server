@@ -7,7 +7,7 @@ import { SocketConnection } from "./socket.io";
 import * as compression from "compression";
 import "reflect-metadata";
 import { createConnection } from "typeorm";
-import TreatmentSiteController from "./treatmentSiteController";
+// import TreatmentSiteController from "./treatmentSiteController";
 
 async function app() {
   const port = process.env.PORT || 3000;
@@ -22,8 +22,8 @@ async function app() {
   const server = http.createServer(app);
   SocketConnection.getSocket(server);
 
-  await TreatmentSiteController.getMapInstance(); // init TimerController
-  await TreatmentSiteController.setAllNewSchedules();
+  // await TreatmentSiteController.getMapInstance(); // init TimerController
+  // await TreatmentSiteController.setAllNewSchedules();
 
   app.use(bodyParser.json()); // auto parse json to js object
   app.use(compression()); // auto compress response
