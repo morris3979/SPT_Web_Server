@@ -1,20 +1,10 @@
 import express, { Router } from "express";
-import treatmentSitesRouter from "./treatmentSitesRouter";
-import buttonsRouter from "./buttonsRouter";
 import { SocketConnection } from "../../socket.io";
-import treatmentsRouter from "./treatmentsRouter";
-import treatmentSchedulesRouter from "./treatmentSchedulesRouter";
-import treatmentSeatsRouter from "./treatmentSeatsRouter";
-import treatmentItemsRouter from "./treatmentItemsRouter";
+import testRouter from "./testRouter";
 
 const apiRouter = Router({});
 
-apiRouter.use("/treatments", treatmentsRouter);
-apiRouter.use("/treatmentSites", treatmentSitesRouter);
-apiRouter.use("/buttons", buttonsRouter);
-apiRouter.use("/treatmentSchedules", treatmentSchedulesRouter);
-apiRouter.use("/treatmentSeats", treatmentSeatsRouter);
-apiRouter.use("/treatmentItems", treatmentItemsRouter);
+apiRouter.use("/test", testRouter);
 
 apiRouter.post("/centralControl/upload", (req: express.Request, res) => {
   // console.log(JSON.stringify(req.body));

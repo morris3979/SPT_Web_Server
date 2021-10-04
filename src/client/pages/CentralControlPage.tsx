@@ -17,35 +17,11 @@ const List = React.lazy(() => import("../component/share/list"));
 const CentralControlPage: FC<{ treatmentItems: TreatmentItem[] }> = (props: {
   treatmentItems: TreatmentItem[];
 }) => {
-  const [patientId, setPatientId] = useState("");
-  const [patientName, setPatientName] = useState("");
-  // const [medicalRecords, setMedicalRecords] = useState<
-  //   {
-  //     timestamp: string;
-  //     doctorName: string;
-  //   }[]
-  // >([]);
-  const [medicalRecords, setMedicalRecords] = useState<string>("");
-  const [gender, setGender] = useState<string | number>("");
+  const [schoolID, setSchoolID] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
-  const [iccard, setIccard] = useState("");
-  const [section, setSection] = useState("morning");
-
-  const [selectedItemsIndexInList, setSelectedItemsIndexInList] = useState<
-    number[]
-  >([]);
-  const selectedItemsIndexInListRef = useRef<number[]>([]);
-  const [hidItemsIndexInList, setHidItemsInList] = useState<number[]>([]);
-  const [selectedTreatmentItems, setSelectedTreatmentItems] = useState<
-    TreatmentItem[]
-  >([]);
-  const [selectedItemsIndexInTable, setSelectedItemsIndexInTable] = useState<
-    number[]
-  >([]);
-  const [sorting, setSorting] = useState(false);
-  const [bind, setBind] = useState<string[][]>([]); //save bind treatmentCode ex. [["PTS4","PTS8"]]
-  const [sort, setSort] = useState<string[][]>([]);
-  const [follow, setFollow] = useState<string[][]>([]);
+  const [gender, setGender] = useState<string | number>("");
 
   useEffect(() => {
     socketConnect();
@@ -57,130 +33,9 @@ const CentralControlPage: FC<{ treatmentItems: TreatmentItem[] }> = (props: {
     []
   );
   useEffect(() => {
-  }, [selectedTreatmentItems]);
+  }, []);
   let socket: SocketIOClient.Socket;
 
-
-  const addBtnOnClick = () => {
-    let treatmentItemsToSelect: TreatmentItem[] = [];
-    let itemsIndexInListToHide: number[] = [];
-    selectedItemsIndexInListRef.current.map((itemIndex) => {
-      const realIndex = props.treatmentItems.findIndex(
-        (item) =>
-          item.id ===
-          props.treatmentItems.filter(
-            (item) => !item.treatmentCode.includes("-")
-          )[itemIndex].id
-      );
-      treatmentItemsToSelect.push(props.treatmentItems[realIndex]);
-      itemsIndexInListToHide.push(itemIndex);
-    });
-    selectedItemsIndexInListRef.current = [];
-    setSelectedItemsIndexInList([]);
-    setHidItemsInList([...hidItemsIndexInList].concat(itemsIndexInListToHide));
-    setSelectedTreatmentItems(
-      [...selectedTreatmentItems].concat(treatmentItemsToSelect)
-    );
-  };
-
-  const deleteBtnOnClick = () => {
-    const hidItemsIndexInListCopy = [...hidItemsIndexInList];
-    selectedItemsIndexInTable.map((itemIndex) => {
-      const indexToDelete = hidItemsIndexInListCopy.indexOf(
-        props.treatmentItems.indexOf(selectedTreatmentItems[itemIndex])
-      );
-      hidItemsIndexInListCopy.splice(indexToDelete, 1);
-    });
-    setHidItemsInList(hidItemsIndexInListCopy);
-
-    setBind(
-      bind.filter(
-        (b) =>
-          !selectedItemsIndexInTable
-            .map((itemIndex) =>
-              b.includes(selectedTreatmentItems[itemIndex].treatmentCode)
-            )
-            .includes(true)
-      )
-    );
-
-    setSort(
-      sort.filter(
-        (s) =>
-          !selectedItemsIndexInTable
-            .map((itemIndex) =>
-              s.includes(selectedTreatmentItems[itemIndex].treatmentCode)
-            )
-            .includes(true)
-      )
-    );
-
-    setFollow(
-      follow.filter(
-        (f) =>
-          !selectedItemsIndexInTable
-            .map((itemIndex) =>
-              f.includes(selectedTreatmentItems[itemIndex].treatmentCode)
-            )
-            .includes(true)
-      )
-    );
-
-    setSelectedTreatmentItems(
-      selectedTreatmentItems.filter((v, i) => {
-        return !selectedItemsIndexInTable.includes(i);
-      })
-    );
-    setSelectedItemsIndexInTable([]);
-  };
-
-  const sortBtnOnClick = async () => {
-    let id: number;
-    setSorting(true);
-    try {
-      id = await createTreatment(
-        patientId,
-        patientName,
-        medicalRecords,
-        String(gender),
-        dateOfBirth,
-        iccard,
-        section
-      );
-    } catch (e) {
-      setSorting(false);
-      alert("存儲 patient 失敗");
-      return;
-    }
-
-    try {
-      await createTreatmentSchedulesInTreatment(
-        id,
-        selectedTreatmentItems,
-        bind,
-        sort,
-        follow
-      );
-    } catch (e) {
-      setSorting(false);
-      alert("存儲 treatmentSites 失敗");
-      return;
-    }
-    selectedItemsIndexInListRef.current = [];
-    setSelectedItemsIndexInList([]);
-    setHidItemsInList([]);
-    setSelectedTreatmentItems([]);
-    setSelectedItemsIndexInTable([]);
-    setPatientId("");
-    setPatientName("");
-    setMedicalRecords("");
-    setSorting(false);
-    setBind([]);
-    setSort([]);
-    setFollow([]);
-
-    alert("排程成功");
-  };
 
   const socketConnect = (): void => {
     socket = io("/centralControl", { forceNew: true });
@@ -197,26 +52,6 @@ const CentralControlPage: FC<{ treatmentItems: TreatmentItem[] }> = (props: {
             }
           });
       });
-      // data.medicalRecords.map((record, i) => {
-      //   const date = new Date(record.timestamp);
-      //   record.timestamp =
-      //     date.getFullYear() +
-      //     "/" +
-      //     (date.getMonth() + 1) +
-      //     "/" +
-      //     date.getDate() +
-      //     " " +
-      //     date.getHours() +
-      //     ":" +
-      //     date.getMinutes();
-      // });
-
-      setPatientId(data.patientID);
-      setPatientName(data.name);
-      setMedicalRecords(data.medicalRecords);
-      setDateOfBirth(data.dateOfBirth);
-      setIccard(data.iccard);
-      setGender(data.gender);
 
     });
   };
@@ -231,30 +66,42 @@ const CentralControlPage: FC<{ treatmentItems: TreatmentItem[] }> = (props: {
           <input
             className="input1"
             placeholder="學號"
-            value={patientId}
+            value={schoolID}
             style={{
               fontSize: 18,
               width: "100px",
             }}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setPatientId(e.currentTarget.value)
+              setSchoolID(e.currentTarget.value)
             }
           />
           <input
             className="input1"
             placeholder="密碼"
-            value={patientName}
+            value={password}
             style={{
               fontSize: 18,
               width: "100px",
             }}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setPatientName(e.currentTarget.value)
+              setPassword(e.currentTarget.value)
             }
           />
           <input
             className="input1"
             placeholder="姓名"
+            value={name}
+            style={{
+              fontSize: 18,
+              width: "100px",
+            }}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setName(e.currentTarget.value)
+            }
+          />
+          <input
+            className="input1"
+            placeholder="生日"
             value={dateOfBirth}
             style={{
               fontSize: 18,
@@ -266,15 +113,15 @@ const CentralControlPage: FC<{ treatmentItems: TreatmentItem[] }> = (props: {
           />
           <select
             className="h-75 mr-4"
-            value={section}
+            value={gender}
             onChange={(e: React.FormEvent<HTMLSelectElement>) => {
-              setSection(e.currentTarget.value);
+              setGender(e.currentTarget.value);
             }}
           >
             <option value="male">男</option>
             <option value="female">女</option>
           </select>
-          <button className="input3">
+          <button className="input3 btn btn-orange">
             儲存
           </button>
         </div>
@@ -295,12 +142,6 @@ const CentralControlPage: FC<{ treatmentItems: TreatmentItem[] }> = (props: {
           />
         </div>
       </div>
-
-      {sorting ? (
-        <div className="absolute-full">
-          <SpinnerCircle />
-        </div>
-      ) : null}
     </div>
   );
 };
