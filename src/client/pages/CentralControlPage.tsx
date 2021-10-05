@@ -132,12 +132,7 @@ const CentralControlPage: FC<{ treatmentItems: TreatmentItem[] }> = (props: {
             className="patient-table"
             head={["學號", "密碼", "姓名", "性別"]}
             data={[]}
-            sort={[
-              "id",
-              "patient.name",
-              "treatmentSchedules.0.treatmentSite.name",
-              "treatmentSchedules.1.treatmentSite.name",
-            ]}
+            sort={[]}
             autoScroll
           />
         </div>
