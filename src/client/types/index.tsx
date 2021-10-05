@@ -96,3 +96,11 @@ export interface TreatmentSite {
 
   treatmentSeats?: TreatmentSeat[];
 }
+
+export interface Register {
+  id: number;
+  
+  userId: string;
+
+  password: string;
+}

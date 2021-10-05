@@ -46,7 +46,7 @@ const App: React.FC = () => {
     });
   }, []);
 
-  // if (loggedIn) {
+  if (loggedIn) {
     return (
       <div className="root">
         <CssBaseline />
@@ -111,15 +111,15 @@ const App: React.FC = () => {
         </main>
       </div>
     );
-  // } else {
-  //   return (
-  //     <Login
-  //       onLoginSuccess={() => {
-  //         setLoggedIn(true);
-  //       }}
-  //     />
-  //   );
-  // }
+  } else {
+    return (
+      <Login
+        onLoginSuccess={() => {
+          setLoggedIn(true);
+        }}
+      />
+    );
+  }
 };
 
 export default App;
