@@ -23,6 +23,9 @@ pageRouter.get("/WaitingnumberList", async (req, res) => {
   res.sendFile("index.html", { root: path.join(__dirname, "../../public") });
 });
 
+pageRouter.get("/Register", async (req, res) => {
+  res.sendFile("index.html", { root: path.join(__dirname, "../../public") });
+});
 
 pageRouter.get(
   "/treatmentSites/:siteId/:itemIds",
