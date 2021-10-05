@@ -26,12 +26,12 @@ export class SocketConnection {
       io.of("/centralControl").on("connection", function () {
         console.log("/centralControl connect");
       });
-      io.of("/maintain").on("connection", function () {
-        console.log("/maintain connect");
-      });
-      io.of("/treatmentItems").on("connection", function () {
-        console.log("/treatmentItems connect");
-      });
+      // io.of("/maintain").on("connection", function () {
+      //   console.log("/maintain connect");
+      // });
+      // io.of("/treatmentItems").on("connection", function () {
+      //   console.log("/treatmentItems connect");
+      // });
 
       return io;
     }
